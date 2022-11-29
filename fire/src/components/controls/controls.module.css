@@ -1,0 +1,59 @@
+.container {
+  grid-area: controls;
+  display: flex;
+  flex-direction: row;
+  padding: var(--spacing);
+  align-items: center;
+  background: transparent;
+  gap: var(--spacing);
+  z-index: 4;
+}
+
+.trackbar {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 5px;
+  border-radius: var(--border-radius);
+  background: var(--black-color);
+  outline: none;
+  transition: opacity 0.2s;
+}
+
+.trackbar:hover {
+  background: var(--icon-background-hover-color);
+  cursor: pointer;
+}
+
+.trackbar:focus {
+  box-shadow: 0px 0px 5px 0px #cacaca;
+}
+
+.trackbar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--font-color);
+}
+
+.trackbar::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--font-color);
+}
+
+@media (max-width: 1100px) {
+  .container {
+    grid-area: controls;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: var(--spacing);
+    align-items: center;
+    background: transparent;
+    gap: var(--spacing);
+    z-index: 4;
+  }
+}

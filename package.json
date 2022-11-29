@@ -1,0 +1,13 @@
+{
+  "name": "fire-video-editor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "server": "npm start --prefix backend",
+    "client": "npm start --prefix fire",
+    "start": "npm run server & npm run client"
+  },
+  "repository": "https://gitlab.com/sg83/videoserver.git",
+  "author": "Minh Sang <msang.sg@gmail.com>",
+  "license": "MIT"
+}

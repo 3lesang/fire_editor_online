@@ -1,0 +1,13 @@
+.container {
+  grid-area: mediaPlayer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 15px 5px 15px;
+}
+
+.canvas {
+  background-color: black;
+  max-width: 100%;
+  max-height: 100%;
+}

@@ -1,0 +1,85 @@
+.container {
+  grid-area: mediaPool;
+  background: var(--media-pool-background-color);
+  padding: var(--spacing);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+  overflow-y: hidden;
+  z-index: 5;
+}
+
+.mediaList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  overflow-y: auto;
+}
+
+.hbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.addFiles {
+  width: 50px;
+  height: 50px;
+}
+
+.card {
+  background-color: var(--media-pool-card-background-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing);
+  margin-bottom: 20px;
+}
+
+.img {
+  width: 100px;
+}
+
+.cardCaption {
+  color: var(--font-color);
+  text-overflow: ellipsis;
+  word-break: break-word;
+  font-size: 12px;
+  max-width: calc(100% - 100px - var(--spacing));
+}
+
+.title {
+  color: var(--font-color);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 50px;
+}
+
+.button {
+  align-self: flex-end;
+  padding: 0px;
+  margin: 0px -10px -10px 0px;
+  height: auto;
+  width: auto;
+}
+
+.button:hover {
+  background: transparent;
+}
+
+.button span {
+  font-size: 16px;
+  color: #3a3a3a;
+}
+
+.button:hover span {
+  font-size: 16px;
+  color: #686868;
+}
+.loader {
+  color: var(--font-color);
+  font-size: large;
+}
