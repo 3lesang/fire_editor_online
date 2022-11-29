@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "install-backend": "npm install --prefix backend",
-    "install-fire": "npm install --prefix fire",
-    "install": "npm run install-backend && npm run install-fire",
+    "install-client": "npm install --force --prefix fire",
+    "install-server": "npm install --prefix server",
+    "install": "npm run install-client && npm run install-server",
     "server": "npm start --prefix backend",
     "client": "npm start --prefix fire",
     "start": "npm run server & npm run client"
