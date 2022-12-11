@@ -8,8 +8,8 @@
     "install": "npm run install-client && npm run install-server",
     "server": "npm start --prefix backend",
     "client": "npm start --prefix fire",
-    "start": "npm run install-server & npm run server",
-    "build": "npm run install-client & npm run build --prefix fire"
+    "start": "npm run install-server && npm run server",
+    "build": "npm run install-client && npm run build --prefix fire"
   },
   "repository": "https://gitlab.com/sg83/videoserver.git",
   "author": "Minh Sang <msang.sg@gmail.com>",
