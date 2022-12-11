@@ -1,13 +1,11 @@
 const { loginClient } = require('../config');
 const dbo = require('../db');
-const CLIENT_ID =
-  '1010611727033-t5uiv067a9db9j900i9lnpqi3jncmtlt.apps.googleusercontent.com';
 const ObjectID = require('mongodb').ObjectID;
 async function auth(req, res, next) {
   try {
     const ticket = await loginClient.verifyIdToken({
       idToken: req.headers.authorization.split('Bearer ')[1],
-      audience: CLIENT_ID,
+      audience: process.env.CLIENT_ID,
     });
     req.email = ticket.getPayload().email;
     next();
