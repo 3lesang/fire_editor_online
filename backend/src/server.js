@@ -16,10 +16,10 @@ app.use(
 );
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
+route(app);
 app.get('/*', (req, res) => {
   return res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
-route(app);
 dbo.connectToServer(function (err) {
   if (err) {
     console.error(err);
