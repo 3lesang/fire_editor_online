@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import styles from './projects.module.css';
-import axios from 'axios';
 import { useState } from 'react';
 import { Project } from '../model/types';
 import { useHistory } from 'react-router-dom';
+import instance from '../api';
 
 export default function Projects(props: {
   projectUser: string;
@@ -11,23 +11,13 @@ export default function Projects(props: {
   setProjects: (projects: Project[]) => void;
 }) {
   const history = useHistory();
-
   function modifyProject(event: any) {
     event.preventDefault();
     if (!modifyingProject) return;
-
-    const instance = axios.create({ baseURL: 'http://localhost:8000' });
-
     if (modifyingProject._id !== '') {
-      instance
-        .put('/editProject', modifyingProject, {
-          headers: {
-            Authorization: `Bearer ${sessionStorage.getItem('token')}`,
-          },
-        })
-        .then((res) => {
-          setModifyingProject(null);
-        });
+      instance.put('/editProject', modifyingProject).then(() => {
+        setModifyingProject(null);
+      });
       let newProjects = [];
       for (const proj of props.projects) {
         if (proj._id === modifyingProject._id) {
@@ -38,37 +28,22 @@ export default function Projects(props: {
       }
       props.setProjects(newProjects);
     } else {
-      instance
-        .put('/addProject', modifyingProject, {
-          headers: {
-            Authorization: `Bearer ${sessionStorage.getItem('token')}`,
-          },
-        })
-        .then((res) => {
-          props.setProjects([...props.projects, res.data]);
-          setModifyingProject(null);
-        });
+      instance.put('/addProject', modifyingProject).then((res) => {
+        props.setProjects([...props.projects, res.data]);
+        setModifyingProject(null);
+      });
     }
   }
-
   function deleteProject(id: string) {
-    const instance = axios.create({ baseURL: 'http://localhost:8000' });
-    instance
-      .delete(`/deleteProject/${id}`, {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` },
-      })
-      .then((res) => {
-        props.setProjects(props.projects.filter((item) => item._id !== id));
-      });
+    instance.delete(`/deleteProject/${id}`).then(() => {
+      props.setProjects(props.projects.filter((item) => item._id !== id));
+    });
   }
-
   const [modifyingProject, setModifyingProject] = useState<Project | null>(
     null
   );
-
   const NewProject = () => {
     if (!modifyingProject) return;
-
     return (
       <div className={styles.popup}>
         <div

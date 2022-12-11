@@ -57,22 +57,34 @@ export default function ExportPage(props: any) {
       <div className={styles.sidebar}>
         <div className={styles.vbar}>
           <Link to="/">
-            <img className={styles.logo} src="/logo192.png" />
+            <img
+              className={styles.logo}
+              src="/logo192.png"
+            />
           </Link>
           <div>
             <h1>Fire</h1>
             <p>Video Editor</p>
           </div>
         </div>
-        <Link to="/projects" className={styles.btn}>
+        <Link
+          to="/projects"
+          className={styles.btn}
+        >
           <span className="material-icons">layers</span> Current Projects
         </Link>
-        <Link to="/export" className={styles.active}>
+        <Link
+          to="/export"
+          className={styles.active}
+        >
           <span className="material-icons">save_alt</span> Exported Files
         </Link>
       </div>
       <button className={styles.downlaod}>
-        <span className="material-icons" onClick={props.Render}>
+        <span
+          className="material-icons"
+          onClick={props.Render}
+        >
           save_alt
         </span>
       </button>

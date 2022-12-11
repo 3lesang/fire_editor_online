@@ -122,7 +122,11 @@ export default function MediaPool(props: any) {
     >
       <div className={styles.hbox}>
         <h2 className={styles.title}>Project Files</h2>
-        <button className={styles.addFiles} onClick={onClick} title="Add files">
+        <button
+          className={styles.addFiles}
+          onClick={onClick}
+          title="Add files"
+        >
           <span className="material-icons md-36">add</span>
         </button>
       </div>

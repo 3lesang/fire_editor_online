@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './login.module.css';
 import GoogleLogin from 'react-google-login';
 import { gapi } from 'gapi-script';
-import axios from 'axios';
+import instance from '../api';
 
 export default function Login(props: {
   projectUser: string;
@@ -16,14 +16,9 @@ export default function Login(props: {
 
   const handleLogin = (response: any) => {
     sessionStorage.setItem('token', response.tokenId);
-    const instance = axios.create({ baseURL: 'http://localhost:8000' });
-    instance
-      .get('/getEmail', {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` },
-      })
-      .then((res) => {
-        props.setProjectUser(res.data.email);
-      });
+    instance.get('/getEmail').then((res) => {
+      props.setProjectUser(res.data.email);
+    });
   };
   useEffect(() => {
     function start() {
@@ -46,9 +41,6 @@ export default function Login(props: {
               src="/logo192.png"
             />
           </Link>
-          {/* <button className={styles.button} title="Sign in with Google">
-                    <img className={styles.google} src="/google.svg"/> Sign in with Google
-                </button> */}
           <GoogleLogin
             clientId="1010611727033-t5uiv067a9db9j900i9lnpqi3jncmtlt.apps.googleusercontent.com"
             render={(renderProps) => (

@@ -1,7 +1,7 @@
 import MediaManager from './mediaManager';
 import { useEffect, useState } from 'react';
 import { Project } from './types';
-import axios from 'axios';
+import instance from '../api';
 
 export default function ProjectManager() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -26,29 +26,17 @@ export default function ProjectManager() {
 
   useEffect(() => {
     if (sessionStorage.getItem('token') != null) {
-      const instance = axios.create({ baseURL: 'http://localhost:8000' });
-      instance
-        .get('/getEmail', {
-          headers: {
-            Authorization: `Bearer ${sessionStorage.getItem('token')}`,
-          },
-        })
-        .then((res) => {
-          setProjectUser(res.data.email);
-        });
+      instance.get('/getEmail').then((res) => {
+        setProjectUser(res.data.email);
+      });
     }
   }, []);
 
   useEffect(() => {
     if (projectUser === '') return;
-    const instance = axios.create({ baseURL: 'http://localhost:8000' });
-    instance
-      .get('/getProjects', {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` },
-      })
-      .then((res) => {
-        setProjects(res.data);
-      });
+    instance.get('/getProjects').then((res) => {
+      setProjects(res.data);
+    });
   }, [projectUser]);
 
   return (

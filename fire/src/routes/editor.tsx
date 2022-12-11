@@ -46,7 +46,6 @@ export default function Editor(props: {
 
     const { source, destination } = result;
 
-    // for re-ordering files in the media pool
     if (source.droppableId === destination.droppableId) {
       const items = props.mediaList.slice();
       const [reorderedItem] = items.splice(result.source.index, 1);
